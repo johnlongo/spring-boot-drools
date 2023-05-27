@@ -1,0 +1,38 @@
+
+
+package com.poc.drools.rules
+import  com.poc.drools.domain.Message
+import  com.poc.drools.enums.EnumMessage
+import  com.poc.drools.service.MessageService
+import  com.poc.drools.util.SpringContext
+import  com.poc.drools.util.MessageUtil
+dialect  "mvel"
+
+function void outMsg(String name) {
+  System.out.println( "Message" + ": " + name);
+}
+
+
+rule "HelloWorld"
+    dialect "mvel"
+    when
+        m : Message(status == EnumMessage.HELLO.code, message : message )
+    then
+       //service
+        MessageService messageService = SpringContext.getBean(MessageService.class);
+        messageService.outMsg(message);
+
+        MessageUtil.outMsg(message);
+
+        outMsg(message);
+
+    modify ( m ) { message = "goodbye drools", status = EnumMessage.BYE.getCode() };
+end
+
+rule GoodBye
+    dialect "java"
+    when
+        Message( status == EnumMessage.BYE.getCode(), message : message )
+    then
+        System.out.println( message );
+end
