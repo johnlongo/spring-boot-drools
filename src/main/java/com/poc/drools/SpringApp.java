@@ -10,8 +10,8 @@ import com.poc.drools.config.DroolsAutoConfiguration;
 @Configuration
 @SpringBootApplication
 @Import(DroolsAutoConfiguration.class)
-public class App {
+public class SpringApp {
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(App.class, args);
+		SpringApplication.run(SpringApp.class, args);
 	}
 }

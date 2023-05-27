@@ -1,4 +1,4 @@
-package com.licc;
+package com.poc.drools.test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
@@ -11,12 +11,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.poc.drools.App;
+import com.poc.drools.SpringApp;
 
 
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = App.class)
+@SpringBootTest(classes = SpringApp.class)
 public class DroolsTest {
 
   @Autowired
